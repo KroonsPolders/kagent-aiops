@@ -1,0 +1,26 @@
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kagent.dev/v1alpha2","kind":"ModelConfig","metadata":{"annotations":{},"name":"default-model-config","namespace":"kagent"},"spec":{"model":"llama3.2:3b","ollama":{"host":"http://192.168.0.6:11434"},"provider":"Ollama"}}
+  creationTimestamp: "2026-06-08T05:29:02Z"
+  generation: 1
+  name: default-model-config
+  namespace: kagent
+  resourceVersion: "9653"
+  uid: db8d4933-9539-44b0-b9d8-7bf26e594f76
+spec:
+  model: llama3.2:3b
+  ollama:
+    host: http://192.168.0.6:11434
+  provider: Ollama
+status:
+  conditions:
+  - lastTransitionTime: "2026-06-08T05:29:02Z"
+    message: Model configuration accepted
+    reason: ModelConfigReconciled
+    status: "True"
+    type: Accepted
+  observedGeneration: 1
+  secretHash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855

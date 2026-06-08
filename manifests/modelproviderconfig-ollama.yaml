@@ -1,0 +1,40 @@
+apiVersion: kagent.dev/v1alpha2
+kind: ModelProviderConfig
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kagent.dev/v1alpha2","kind":"ModelProviderConfig","metadata":{"annotations":{},"name":"ollama-provider","namespace":"kagent"},"spec":{"endpoint":"http://192.168.0.6:11434","type":"Ollama"}}
+  creationTimestamp: "2026-06-08T05:15:46Z"
+  generation: 1
+  name: ollama-provider
+  namespace: kagent
+  resourceVersion: "10368"
+  uid: 64929f56-c862-470a-8d42-94609f475c92
+spec:
+  endpoint: http://192.168.0.6:11434
+  type: Ollama
+status:
+  conditions:
+  - lastTransitionTime: "2026-06-08T05:15:46Z"
+    message: Model provider config does not require authentication
+    observedGeneration: 1
+    reason: SecretNotRequired
+    status: "True"
+    type: SecretResolved
+  - lastTransitionTime: "2026-06-08T05:15:46Z"
+    message: Discovered 1 models
+    observedGeneration: 1
+    reason: ModelsDiscovered
+    status: "True"
+    type: ModelsDiscovered
+  - lastTransitionTime: "2026-06-08T05:15:46Z"
+    message: Model provider config is ready
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Ready
+  discoveredModels:
+  - llama3.2:3b
+  lastDiscoveryTime: "2026-06-08T05:29:43Z"
+  modelCount: 1
+  observedGeneration: 1

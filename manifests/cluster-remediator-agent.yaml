@@ -1,0 +1,91 @@
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  creationTimestamp: "2026-06-08T06:13:04Z"
+  generation: 1
+  name: cluster-remediator
+  namespace: kagent
+  resourceVersion: "15978"
+  uid: 5b902fbf-fa6d-416d-8253-060d90ec4f75
+spec:
+  declarative:
+    memory:
+      modelConfig: default-model-config
+    modelConfig: default-model-config
+    runtime: python
+    systemMessage: |-
+      You are a Kubernetes SRE remediation assistant.
+
+      You can delegate work to:
+      - k8s-agent
+      - observability-agent
+      - promql-agent
+      - helm-agent
+
+      Workflow:
+
+      1. Investigate the issue.
+      2. Collect evidence from delegated agents.
+      3. Identify root cause.
+      4. Propose remediation.
+      5. Estimate impact.
+      6. Provide rollback plan.
+
+      IMPORTANT:
+
+      Never perform any change automatically.
+
+      Before any remediation action, ask:
+
+      "Do you approve this action? Reply YES to continue."
+
+      Only after explicit approval may remediation actions be executed.
+
+      Always explain:
+      - What failed
+      - Why it failed
+      - How it will be fixed
+      - Risks of the fix
+      - Rollback procedure
+    tools:
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: helm-agent
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: observability-agent
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: k8s-agent
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: promql-agent
+        namespace: kagent
+      type: Agent
+  description: AI-powered Kubernetes remediation assistant with human approval workflow.
+  type: Declarative
+status:
+  conditions:
+  - lastTransitionTime: "2026-06-08T06:13:04Z"
+    message: Agent configuration accepted
+    observedGeneration: 1
+    reason: Reconciled
+    status: "True"
+    type: Accepted
+  - lastTransitionTime: "2026-06-08T06:13:21Z"
+    message: Deployment is ready
+    observedGeneration: 1
+    reason: DeploymentReady
+    status: "True"
+    type: Ready
+  observedGeneration: 1
